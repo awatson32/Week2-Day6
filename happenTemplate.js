@@ -24,19 +24,19 @@ var library = (function() {
 	})(),
 	Second: (function(){
 		return{
-			Second: function(){},
+			Second: function(){return String(new Date().getSeconds());},
 			DblDigit: function(){}
 		}
 	})(),
 	Minute: (function(){
 		return{
-			Minute: function(){},
+			Minute: function(){return String(new Date().getMinutes());},
 			DblDigit: function(){}
 		}
 	})(),
 	Hour: (function(){
 		return {
-			TwentyFourHour: function() {},
+			TwentyFourHour: function() {return String(new Date().getHours());},
 			TwelveHour: function() {},
 			AMPM: (function() {
 				return {
@@ -48,7 +48,11 @@ var library = (function() {
 	})(),
 	Week: (function(){
 		return {
-			DayOfWeek: function(){},
+			DayOfWeek: function(){
+                var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                var d = new Date();
+                return days[d.getDay()];
+            },
 			AbrDayOfWeek: function(){},
 			FirstTwoOfWeek: function(){},
 			WeekOfYear: function(){}
@@ -63,8 +67,8 @@ var library = (function() {
 					DateDblDigit: function(){}
 				}
 			})(),
-			MonthNumber: function(){},
-			MonthNumberDblDigit: function(){},
+			MonthNumber: function(){return String(new Date().getMonth() + 1);},
+			MonthNumberDblDigit: function(){return String('0' + new Date().getMonth() + 1).slice(-2);},
 			AbrOfCurrentMonth: function(){},
 			CurrentMonth: function(){}
 		}
